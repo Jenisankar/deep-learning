@@ -1,0 +1,15 @@
+
+import tensorflow as tf
+
+augmentation = tf.keras.Sequential([
+    tf.keras.layers.RandomFlip("horizontal"),
+    tf.keras.layers.RandomRotation(0.2),
+    tf.keras.layers.RandomZoom(0.2)
+])
+
+image = tf.random.uniform((1,128,128,3))
+
+augmented_image = augmentation(image)
+
+print("Original shape:", image.shape)
+print("Augmented shape:", augmented_image.shape)
